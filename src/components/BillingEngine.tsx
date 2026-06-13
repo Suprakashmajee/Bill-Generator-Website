@@ -6,6 +6,8 @@ import {
 import { InvoiceData, InvoiceItem, CountryCode } from '../types';
 import { COUNTRIES, US_STATES, INDIA_STATES } from '../utils/countries';
 import { numberToWords } from '../utils/numberToWords';
+import html2canvas from 'html2canvas';
+import { jsPDF } from 'jspdf';
 
 // Standard demo datasets for US, India, and UK to showcase features
 const SAMPLE_DATASETS: Record<CountryCode, Partial<InvoiceData>> = {
@@ -756,10 +758,6 @@ export default function BillingEngine() {
     setIsGeneratingPdf(true);
 
     try {
-      // Lazy load html2canvas & jspdf safely 
-      const html2canvasModule = (await import('html2canvas')).default;
-      const { jsPDF } = await import('jspdf');
-
       const target = invoicePreviewRef.current;
       if (!target) {
         throw new Error('Invoice element wrapper reference is not found!');
@@ -772,7 +770,13 @@ export default function BillingEngine() {
         allowTaint: true
       };
 
-      const canvas = await html2canvasModule(target, opt);
+      // Resolve html2canvas safely if a default property exists
+      let html2canvasFn = html2canvas;
+      if ((html2canvasFn as any).default && typeof (html2canvasFn as any).default === 'function') {
+        html2canvasFn = (html2canvasFn as any).default;
+      }
+
+      const canvas = await html2canvasFn(target, opt);
       const imgData = canvas.toDataURL('image/png');
 
       const pdf = new jsPDF({
