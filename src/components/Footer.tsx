@@ -46,7 +46,7 @@ export default function Footer() {
             {/* Support Credentials listed */}
             <div className="space-y-3.5 pt-2">
               <a
-                href="mailto:support@billstore.com"
+                href="mailto:support@bill-store.com"
                 className="flex items-center gap-2.5 text-xs text-gray-300 hover:text-sky-400 transition"
               >
                 <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gray-900 text-sky-400 border border-gray-800 shrink-0">
@@ -54,7 +54,7 @@ export default function Footer() {
                 </div>
                 <div>
                   <span className="text-[10px] text-gray-500 block uppercase font-bold">Email Support Ticket</span>
-                  <span className="font-semibold">support@billstore.com</span>
+                  <span className="font-semibold">support@bill-store.com</span>
                 </div>
               </a>
 
