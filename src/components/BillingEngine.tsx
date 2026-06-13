@@ -981,10 +981,53 @@ export default function BillingEngine() {
               
               {/* SENDER / MERCHANT BLOCK */}
               <div className="space-y-4">
-                <h3 className="text-sm font-bold text-gray-950 border-b border-gray-100 pb-2 flex items-center gap-2">
-                  <div className="h-2 w-2 rounded-full bg-emerald-500"></div>
-                  Vendor Details (From)
-                </h3>
+                <div className="flex items-center justify-between border-b border-gray-100 pb-2">
+                  <h3 className="text-sm font-bold text-gray-950 flex items-center gap-2">
+                    <div className="h-2 w-2 rounded-full bg-emerald-500"></div>
+                    Vendor Details (From)
+                  </h3>
+                  {localStorage.getItem('billstore_curr_user') && (
+                    <button
+                      type="button"
+                      id="autofill-profile-btn"
+                      onClick={() => {
+                        try {
+                          const savedUserStr = localStorage.getItem('billstore_curr_user');
+                          if (savedUserStr) {
+                            const savedUser = JSON.parse(savedUserStr);
+                            const savedProfileStr = localStorage.getItem(`profile_${savedUser.email.toLowerCase()}`);
+                            if (savedProfileStr) {
+                              const savedProfile = JSON.parse(savedProfileStr);
+                              
+                              setInvoice(prev => ({
+                                ...prev,
+                                sender: {
+                                  ...prev.sender,
+                                  name: savedProfile.name || prev.sender.name,
+                                  email: savedProfile.email || prev.sender.email,
+                                  phone: savedProfile.phone || prev.sender.phone,
+                                  address: savedProfile.businessAddress || prev.sender.address,
+                                  taxId: savedProfile.taxId || prev.sender.taxId,
+                                  zipCode: savedProfile.zipCode || prev.sender.zipCode,
+                                  state: savedProfile.state || prev.sender.state,
+                                }
+                              }));
+                              alert('Seeded billing parameters from your master customer profile.');
+                            } else {
+                              alert('Initialize your Brand Profile first by clicking your name in the navigation header.');
+                            }
+                          }
+                        } catch (err) {
+                          console.error(err);
+                          alert('Error pulling profile coordinates.');
+                        }
+                      }}
+                      className="inline-flex items-center gap-1 text-[10px] font-black bg-sky-50 text-sky-700 hover:bg-sky-100 px-2.5 py-1 rounded-md border border-sky-200 cursor-pointer transition active:scale-95 text-xs font-semibold"
+                    >
+                      📄 Fill from Profile
+                    </button>
+                  )}
+                </div>
 
                 <div>
                   <label className="block text-[11px] font-semibold text-gray-600 mb-1">Company / Creator Name</label>
@@ -1027,7 +1070,7 @@ export default function BillingEngine() {
                     rows={2}
                     value={invoice.sender.address}
                     onChange={(e) => handleSenderChange('address', e.target.value)}
-                    placeholder="Sector 5, Salt Lake, Kolkata"
+                    placeholder="BTM Layout, 6th Stage, Bangalore"
                     className="w-full border border-gray-200 rounded-lg p-2.5 text-xs focus:border-sky-500"
                   ></textarea>
                 </div>
@@ -1597,7 +1640,7 @@ export default function BillingEngine() {
                       type="text"
                       value={invoice.bankDetails.branchName}
                       onChange={(e) => handleBankChange('branchName', e.target.value)}
-                      placeholder="Kolkata S7 Branch"
+                      placeholder="Bangalore BTM Branch"
                       className="w-full h-8 bg-white border border-gray-200 rounded-lg px-2 text-xs"
                     />
                   </div>

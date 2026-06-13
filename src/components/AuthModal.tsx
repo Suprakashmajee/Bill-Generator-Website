@@ -4,7 +4,7 @@ import { Mail, Lock, User, Eye, EyeOff, ShieldCheck, X } from 'lucide-react';
 interface AuthModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onSuccess: (email: string) => void;
+  onSuccess: (email: string, name: string) => void;
   initialTab?: 'login' | 'signup';
 }
 
@@ -26,7 +26,7 @@ export default function AuthModal({ isOpen, onClose, onSuccess, initialTab = 'lo
     setSuccess('');
 
     if (!email || !password) {
-      setError('Please fill in all search fields.');
+      setError('Please fill in check fields.');
       return;
     }
     if (tab === 'signup' && !name) {
@@ -36,12 +36,93 @@ export default function AuthModal({ isOpen, onClose, onSuccess, initialTab = 'lo
 
     setLoading(true);
     setTimeout(() => {
-      setLoading(false);
-      setSuccess(tab === 'login' ? 'Welcome back! Logged in successfully.' : 'Account created successfully! Welcome to Bill_Store.');
-      setTimeout(() => {
-        onSuccess(email);
-        onClose();
-      }, 1500);
+      try {
+        const usersJson = localStorage.getItem('billstore_users') || '[]';
+        const users = JSON.parse(usersJson) as { name: string; email: string; password?: string }[];
+        
+        const lowerEmail = email.toLowerCase().trim();
+        
+        if (tab === 'signup') {
+          const exists = users.find(u => u.email.toLowerCase() === lowerEmail);
+          if (exists) {
+            setError('This email is already registered. Please sign in instead.');
+            setLoading(false);
+            return;
+          }
+          
+          const newUser = { name: name.trim(), email: lowerEmail, password };
+          users.push(newUser);
+          localStorage.setItem('billstore_users', JSON.stringify(users));
+          
+          // Seed master customer profile
+          const initialProfile = {
+            name: name.trim(),
+            email: lowerEmail,
+            phone: '',
+            businessName: name.trim() + ' Services',
+            businessAddress: '',
+            taxId: '',
+            state: '',
+            zipCode: '',
+          };
+          localStorage.setItem(`profile_${lowerEmail}`, JSON.stringify(initialProfile));
+          
+          setLoading(false);
+          setSuccess('Account created successfully! Welcome to Bill_Store.');
+          setTimeout(() => {
+            onSuccess(lowerEmail, name.trim());
+            onClose();
+          }, 1500);
+          
+        } else {
+          // Login Flow
+          const user = users.find(u => u.email.toLowerCase() === lowerEmail);
+          if (!user) {
+            // Standard pass-through logic for testing ease, creates account automatically if they try to log in
+            const defaultName = lowerEmail.split('@')[0].replace(/[._-]/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+            const newUser = { name: defaultName, email: lowerEmail, password };
+            users.push(newUser);
+            localStorage.setItem('billstore_users', JSON.stringify(users));
+            
+            // Seed profile
+            const initialProfile = {
+              name: defaultName,
+              email: lowerEmail,
+              phone: '',
+              businessName: defaultName + ' Services',
+              businessAddress: '',
+              taxId: '',
+              state: '',
+              zipCode: '',
+            };
+            localStorage.setItem(`profile_${lowerEmail}`, JSON.stringify(initialProfile));
+
+            setLoading(false);
+            setSuccess('Welcome! Account created and logged in successfully.');
+            setTimeout(() => {
+              onSuccess(lowerEmail, defaultName);
+              onClose();
+            }, 1500);
+          } else {
+            if (user.password && user.password !== password) {
+              setLoading(false);
+              setError('Incorrect password. Please verify settings.');
+              return;
+            }
+            
+            setLoading(false);
+            setSuccess('Welcome back! Logged in successfully.');
+            setTimeout(() => {
+              onSuccess(lowerEmail, user.name || lowerEmail.split('@')[0]);
+              onClose();
+            }, 1500);
+          }
+        }
+      } catch (err) {
+        setLoading(false);
+        setError('Error completing login operation.');
+        console.error(err);
+      }
     }, 1000);
   };
 

@@ -77,7 +77,7 @@ export default function Footer() {
                 </div>
                 <div>
                   <span className="text-[10px] text-gray-500 block uppercase font-bold">Corporate Headquarters</span>
-                  <span className="font-semibold text-gray-400">Sector 5, Salt Lake, Kolkata, IN</span>
+                  <span className="font-semibold text-gray-400">BTM Layout, 6th Stage, Bangalore, Karnataka, 560076</span>
                 </div>
               </div>
             </div>

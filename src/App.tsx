@@ -6,10 +6,20 @@ import AboutUs from './components/AboutUs';
 import Pricing from './components/Pricing';
 import Footer from './components/Footer';
 import AuthModal from './components/AuthModal';
+import ProfileModal from './components/ProfileModal';
 
 export default function App() {
-  const [currentUserEmail, setCurrentUserEmail] = useState<string | null>(null);
+  const [currentUser, setCurrentUser] = useState<{ email: string; name: string } | null>(() => {
+    try {
+      const saved = localStorage.getItem('billstore_curr_user');
+      return saved ? JSON.parse(saved) : null;
+    } catch (e) {
+      return null;
+    }
+  });
+  
   const [authModalOpen, setAuthModalOpen] = useState(false);
+  const [profileModalOpen, setProfileModalOpen] = useState(false);
   const [authInitialTab, setAuthInitialTab] = useState<'login' | 'signup'>('login');
 
   const handleOpenAuth = (tab: 'login' | 'signup') => {
@@ -17,12 +27,28 @@ export default function App() {
     setAuthModalOpen(true);
   };
 
-  const handleAuthSuccess = (email: string) => {
-    setCurrentUserEmail(email);
+  const handleAuthSuccess = (email: string, name: string) => {
+    const userObj = { email, name };
+    setCurrentUser(userObj);
+    localStorage.setItem('billstore_curr_user', JSON.stringify(userObj));
+    
+    // Dispatch custom event to notify billing engine or other components to pull latest auth state if needed
+    window.dispatchEvent(new Event('auth-state-changed'));
   };
 
   const handleLogout = () => {
-    setCurrentUserEmail(null);
+    setCurrentUser(null);
+    localStorage.removeItem('billstore_curr_user');
+    window.dispatchEvent(new Event('auth-state-changed'));
+  };
+
+  const handleUpdateUserName = (newName: string) => {
+    if (currentUser) {
+      const updated = { ...currentUser, name: newName };
+      setCurrentUser(updated);
+      localStorage.setItem('billstore_curr_user', JSON.stringify(updated));
+      window.dispatchEvent(new Event('auth-state-changed'));
+    }
   };
 
   return (
@@ -30,9 +56,10 @@ export default function App() {
       
       {/* Dynamic Navigation Header */}
       <Navbar 
-        userEmail={currentUserEmail} 
+        user={currentUser} 
         onOpenAuth={handleOpenAuth} 
         onLogout={handleLogout} 
+        onOpenProfile={() => setProfileModalOpen(true)}
       />
 
       {/* Hero Welcome banner */}
@@ -65,6 +92,14 @@ export default function App() {
         onClose={() => setAuthModalOpen(false)} 
         onSuccess={handleAuthSuccess} 
         initialTab={authInitialTab}
+      />
+
+      {/* Profile Section Modal */}
+      <ProfileModal 
+        isOpen={profileModalOpen}
+        onClose={() => setProfileModalOpen(false)}
+        user={currentUser}
+        onUpdateUser={handleUpdateUserName}
       />
 
     </div>
