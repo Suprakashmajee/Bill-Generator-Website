@@ -1,0 +1,6 @@
+{
+  "name": "Bill_Store",
+  "description": "Dynamic Billing Generator for professional country-compliant bills and invoices globally.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
