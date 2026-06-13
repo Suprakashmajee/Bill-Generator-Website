@@ -819,10 +819,10 @@ export default function BillingEngine() {
     <section id="billing-engine" className="w-full max-w-7xl mx-auto px-4 py-8 md:py-12 scroll-mt-20">
       
       {/* Upper Control Bar */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 bg-yellow-50/75 p-4 rounded-2xl border border-yellow-200">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 bg-sky-50/75 p-4 rounded-2xl border border-sky-200">
         <div>
           <h2 className="text-xl md:text-2xl font-black text-gray-950 flex items-center gap-2">
-            <Sparkles className="h-6 w-6 text-yellow-500 animate-pulse" />
+            <Sparkles className="h-6 w-6 text-sky-500 animate-pulse" />
             Invoice Customizer Panel
           </h2>
           <p className="text-xs text-gray-500 mt-0.5">Custom compliance controls aligned beautifully with physical corporate structures.</p>
@@ -830,7 +830,7 @@ export default function BillingEngine() {
 
         {/* Action presets */}
         <div className="flex flex-wrap items-center gap-2.5">
-          <div className="flex items-center gap-1.5 bg-white border border-yellow-200 px-3 py-1.5 rounded-xl">
+          <div className="flex items-center gap-1.5 bg-white border border-sky-200 px-3 py-1.5 rounded-xl">
             <span className="text-xs font-bold text-gray-650">Preset Samples:</span>
             {['US', 'IN', 'GB', 'CA', 'AU'].map((demoCode) => (
               <button
@@ -839,8 +839,8 @@ export default function BillingEngine() {
                 onClick={() => applySampleData(demoCode as CountryCode)}
                 className={`text-[10px] font-extrabold px-2 py-1 rounded-md transition-all cursor-pointer ${
                   invoice.country === demoCode 
-                    ? 'bg-yellow-400 text-gray-900 shadow-xs' 
-                    : 'bg-gray-100 hover:bg-yellow-100 text-gray-600'
+                    ? 'bg-sky-400 text-gray-950 shadow-xs' 
+                    : 'bg-gray-100 hover:bg-sky-100 text-gray-600'
                 }`}
               >
                 {demoCode}
@@ -851,7 +851,7 @@ export default function BillingEngine() {
           <button
             id="engine-reset-btn"
             onClick={handleReset}
-            className="flex items-center gap-1.5 rounded-xl border border-yellow-300 bg-white hover:bg-yellow-50 px-3 py-2 text-xs font-bold text-gray-700 cursor-pointer transition"
+            className="flex items-center gap-1.5 rounded-xl border border-sky-300 bg-white hover:bg-sky-50 px-3 py-2 text-xs font-bold text-gray-700 cursor-pointer transition"
             title="Reset active form inputs"
           >
             <RefreshCw className="h-3.5 w-3.5" />
@@ -867,8 +867,8 @@ export default function BillingEngine() {
         <div className="lg:col-span-7 space-y-6">
           
           {/* Section: Country and Template Design Styling */}
-          <div className="bg-white rounded-2xl border border-yellow-200 p-6 shadow-xs relative">
-            <span className="absolute -top-3 left-6 inline-flex h-6 items-center justify-center rounded-full bg-yellow-400 px-3 text-xs font-black text-gray-900 shadow-sm">
+          <div className="bg-white rounded-2xl border border-sky-200 p-6 shadow-xs relative">
+            <span className="absolute -top-3 left-6 inline-flex h-6 items-center justify-center rounded-full bg-sky-400 px-3 text-xs font-black text-gray-955 shadow-sm">
               1. Region & Themes
             </span>
 
@@ -879,7 +879,7 @@ export default function BillingEngine() {
                   id="country-selection"
                   value={invoice.country}
                   onChange={(e) => handleCountryChange(e.target.value as CountryCode)}
-                  className="w-full h-11 bg-gray-55/65 hover:bg-gray-50 border border-gray-200 rounded-xl px-3 text-sm font-semibold focus:border-yellow-500 focus:outline-hidden transition cursor-pointer"
+                  className="w-full h-11 bg-gray-55/65 hover:bg-gray-50 border border-gray-200 rounded-xl px-3 text-sm font-semibold focus:border-sky-500 focus:outline-hidden transition cursor-pointer"
                 >
                   {Object.values(COUNTRIES).map((c) => (
                     <option key={c.code} value={c.code}>
@@ -895,7 +895,7 @@ export default function BillingEngine() {
                   id="template-style"
                   value={invoice.templateStyle}
                   onChange={(e) => setInvoice(prev => ({ ...prev, templateStyle: e.target.value as any }))}
-                  className="w-full h-11 bg-gray-55/65 hover:bg-gray-50 border border-gray-200 rounded-xl px-3 text-sm font-semibold focus:border-yellow-500 focus:outline-hidden transition cursor-pointer"
+                  className="w-full h-11 bg-gray-55/65 hover:bg-gray-50 border border-gray-200 rounded-xl px-3 text-sm font-semibold focus:border-sky-500 focus:outline-hidden transition cursor-pointer"
                 >
                   <option value="professional">Professional Classic</option>
                   <option value="gst-modern">Modern Dual-Column</option>
@@ -937,7 +937,7 @@ export default function BillingEngine() {
                       id={`font-sz-btn-${sz}`}
                       onClick={() => setInvoice(prev => ({ ...prev, fontSize: sz as any }))}
                       className={`py-1 text-xs font-bold rounded-lg capitalize cursor-pointer transition-all ${
-                        invoice.fontSize === sz ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500 hover:text-gray-700'
+                        invoice.fontSize === sz ? 'bg-white text-gray-950 shadow-sm' : 'text-gray-500 hover:text-gray-700'
                       }`}
                     >
                       {sz}
@@ -960,7 +960,7 @@ export default function BillingEngine() {
                   />
                   <label
                     htmlFor="business-logo-imagefile"
-                    className="flex items-center justify-center gap-1.5 h-10 border border-dashed border-gray-350 rounded-lg text-xs font-bold text-gray-650 bg-gray-55/50 hover:bg-yellow-50 hover:border-yellow-400 cursor-pointer transition"
+                    className="flex items-center justify-center gap-1.5 h-10 border border-dashed border-gray-350 rounded-lg text-xs font-bold text-gray-650 bg-gray-55/50 hover:bg-sky-50 hover:border-sky-400 cursor-pointer transition"
                   >
                     <Upload className="h-3.5 w-3.5" />
                     {logoFile ? 'Change Logo' : 'Select File'}
@@ -971,8 +971,8 @@ export default function BillingEngine() {
           </div>
 
           {/* Section: Sender and Receiver Contact Details Accordion */}
-          <div className="bg-white rounded-2xl border border-yellow-250 p-6 shadow-xs relative">
-            <span className="absolute -top-3 left-6 inline-flex h-6 items-center justify-center rounded-full bg-yellow-400 px-3 text-xs font-black text-gray-900 shadow-sm">
+          <div className="bg-white rounded-2xl border border-sky-200 p-6 shadow-xs relative">
+            <span className="absolute -top-3 left-6 inline-flex h-6 items-center justify-center rounded-full bg-sky-400 px-3 text-xs font-black text-gray-955 shadow-sm">
               2. Vendor & Client
             </span>
 
@@ -994,7 +994,7 @@ export default function BillingEngine() {
                     value={invoice.sender.name}
                     onChange={(e) => handleSenderChange('name', e.target.value)}
                     placeholder="e.g. Oracle Media Solutions"
-                    className="w-full h-10 border border-gray-200 rounded-lg px-3 text-xs focus:border-yellow-500"
+                    className="w-full h-10 border border-gray-200 rounded-lg px-3 text-xs focus:border-sky-500"
                   />
                 </div>
 
@@ -1006,7 +1006,7 @@ export default function BillingEngine() {
                       value={invoice.sender.email}
                       onChange={(e) => handleSenderChange('email', e.target.value)}
                       placeholder="bill@company.com"
-                      className="w-full h-10 border border-gray-200 rounded-lg px-3 text-xs focus:border-yellow-500"
+                      className="w-full h-10 border border-gray-200 rounded-lg px-3 text-xs focus:border-sky-500"
                     />
                   </div>
                   <div>
@@ -1016,7 +1016,7 @@ export default function BillingEngine() {
                       value={invoice.sender.phone}
                       onChange={(e) => handleSenderChange('phone', e.target.value)}
                       placeholder="+91 95643 27643"
-                      className="w-full h-10 border border-gray-200 rounded-lg px-3 text-xs focus:border-yellow-500"
+                      className="w-full h-10 border border-gray-200 rounded-lg px-3 text-xs focus:border-sky-500"
                     />
                   </div>
                 </div>
@@ -1028,7 +1028,7 @@ export default function BillingEngine() {
                     value={invoice.sender.address}
                     onChange={(e) => handleSenderChange('address', e.target.value)}
                     placeholder="Sector 5, Salt Lake, Kolkata"
-                    className="w-full border border-gray-200 rounded-lg p-2.5 text-xs focus:border-yellow-500"
+                    className="w-full border border-gray-200 rounded-lg p-2.5 text-xs focus:border-sky-500"
                   ></textarea>
                 </div>
 
@@ -1152,7 +1152,7 @@ export default function BillingEngine() {
               {/* RECEIVER / CLIENT BLOCK */}
               <div className="space-y-4">
                 <h3 className="text-sm font-bold text-gray-950 border-b border-gray-100 pb-2 flex items-center gap-2">
-                  <div className="h-2 w-2 rounded-full bg-yellow-500"></div>
+                  <div className="h-2 w-2 rounded-full bg-sky-500"></div>
                   Billing To (Client)
                 </h3>
 
@@ -1164,7 +1164,7 @@ export default function BillingEngine() {
                     value={invoice.receiver.name}
                     onChange={(e) => handleReceiverChange('name', e.target.value)}
                     placeholder="e.g. Apex Hypermarkets Inc."
-                    className="w-full h-10 border border-gray-200 rounded-lg px-3 text-xs focus:border-yellow-500"
+                    className="w-full h-10 border border-gray-200 rounded-lg px-3 text-xs focus:border-sky-500"
                   />
                 </div>
 
@@ -1176,7 +1176,7 @@ export default function BillingEngine() {
                       value={invoice.receiver.email}
                       onChange={(e) => handleReceiverChange('email', e.target.value)}
                       placeholder="finance@client.com"
-                      className="w-full h-10 border border-gray-200 rounded-lg px-3 text-xs focus:border-yellow-500"
+                      className="w-full h-10 border border-gray-200 rounded-lg px-3 text-xs focus:border-sky-500"
                     />
                   </div>
                   <div>
@@ -1186,7 +1186,7 @@ export default function BillingEngine() {
                       value={invoice.receiver.phone}
                       onChange={(e) => handleReceiverChange('phone', e.target.value)}
                       placeholder="+1 (415) 882-9912"
-                      className="w-full h-10 border border-gray-200 rounded-lg px-3 text-xs focus:border-yellow-500"
+                      className="w-full h-10 border border-gray-200 rounded-lg px-3 text-xs focus:border-sky-500"
                     />
                   </div>
                 </div>
@@ -1198,7 +1198,7 @@ export default function BillingEngine() {
                     value={invoice.receiver.address}
                     onChange={(e) => handleReceiverChange('address', e.target.value)}
                     placeholder="Provide full mailing coordinates"
-                    className="w-full border border-gray-200 rounded-lg p-2.5 text-xs focus:border-yellow-500"
+                    className="w-full border border-gray-200 rounded-lg p-2.5 text-xs focus:border-sky-500"
                   ></textarea>
                 </div>
 
@@ -1285,8 +1285,8 @@ export default function BillingEngine() {
           </div>
 
           {/* Section: Invoice Parameters and Metadata */}
-          <div className="bg-white rounded-2xl border border-yellow-250 p-6 shadow-xs relative">
-            <span className="absolute -top-3 left-6 inline-flex h-6 items-center justify-center rounded-full bg-yellow-400 px-3 text-xs font-black text-gray-900 shadow-sm">
+          <div className="bg-white rounded-2xl border border-sky-200 p-6 shadow-xs relative">
+            <span className="absolute -top-3 left-6 inline-flex h-6 items-center justify-center rounded-full bg-sky-400 px-3 text-xs font-black text-gray-955 shadow-sm">
               3. Invoice Numbers & Dates
             </span>
 
@@ -1299,7 +1299,7 @@ export default function BillingEngine() {
                   value={invoice.meta.invoiceNumber}
                   onChange={(e) => handleMetaChange('invoiceNumber', e.target.value)}
                   placeholder="e.g. BS-2026-08"
-                  className="w-full h-10 border border-gray-200 rounded-lg px-3 text-xs font-semibold focus:border-yellow-500 focus:outline-hidden"
+                  className="w-full h-10 border border-gray-200 rounded-lg px-3 text-xs font-semibold focus:border-sky-500 focus:outline-hidden"
                 />
               </div>
 
@@ -1309,7 +1309,7 @@ export default function BillingEngine() {
                   type="date"
                   value={invoice.meta.invoiceDate}
                   onChange={(e) => handleMetaChange('invoiceDate', e.target.value)}
-                  className="w-full h-10 border border-gray-200 rounded-lg px-2 text-xs font-semibold focus:outline-hidden focus:border-yellow-500"
+                  className="w-full h-10 border border-gray-200 rounded-lg px-2 text-xs font-semibold focus:outline-hidden focus:border-sky-500"
                 />
               </div>
 
@@ -1319,7 +1319,7 @@ export default function BillingEngine() {
                   type="date"
                   value={invoice.meta.dueDate}
                   onChange={(e) => handleMetaChange('dueDate', e.target.value)}
-                  className="w-full h-10 border border-gray-200 rounded-lg px-2 text-xs font-semibold focus:outline-hidden focus:border-yellow-500"
+                  className="w-full h-10 border border-gray-200 rounded-lg px-2 text-xs font-semibold focus:outline-hidden focus:border-sky-500"
                 />
               </div>
 
@@ -1330,7 +1330,7 @@ export default function BillingEngine() {
                   value={invoice.meta.paymentTerms || ''}
                   onChange={(e) => handleMetaChange('paymentTerms', e.target.value)}
                   placeholder="NET 30 / COD"
-                  className="w-full h-10 border border-gray-200 rounded-lg px-3 text-xs focus:border-yellow-500"
+                  className="w-full h-10 border border-gray-200 rounded-lg px-3 text-xs focus:border-sky-500"
                 />
               </div>
             </div>
@@ -1362,8 +1362,8 @@ export default function BillingEngine() {
           </div>
 
           {/* Section: Dynamic Line Items list */}
-          <div className="bg-white rounded-2xl border border-yellow-250 p-6 shadow-xs relative">
-            <span className="absolute -top-3 left-6 inline-flex h-6 items-center justify-center rounded-full bg-yellow-400 px-3 text-xs font-black text-gray-900 shadow-sm">
+          <div className="bg-white rounded-2xl border border-sky-200 p-6 shadow-xs relative">
+            <span className="absolute -top-3 left-6 inline-flex h-6 items-center justify-center rounded-full bg-sky-400 px-3 text-xs font-black text-gray-955 shadow-sm">
               4. Service line items
             </span>
 
@@ -1372,10 +1372,10 @@ export default function BillingEngine() {
               {invoice.items.map((item, index) => (
                 <div 
                   key={item.id} 
-                  className="p-4 bg-gray-55/40 rounded-xl border border-gray-100 relative group transition hover:border-yellow-300"
+                  className="p-4 bg-gray-55/40 rounded-xl border border-gray-100 relative group transition hover:border-sky-300"
                 >
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-black text-yellow-800 bg-yellow-100 px-2.5 py-1 rounded-md">
+                    <span className="text-xs font-black text-sky-800 bg-sky-100 px-2.5 py-1 rounded-md">
                       Item #{index + 1}
                     </span>
                     <button
@@ -1396,7 +1396,7 @@ export default function BillingEngine() {
                         value={item.name}
                         onChange={(e) => handleItemChange(item.id, 'name', e.target.value)}
                         placeholder="Premium service description..."
-                        className="w-full h-9 border border-gray-200 rounded-lg px-2.5 text-xs focus:border-yellow-500"
+                        className="w-full h-9 border border-gray-200 rounded-lg px-2.5 text-xs focus:border-sky-500"
                       />
                     </div>
 
@@ -1408,7 +1408,7 @@ export default function BillingEngine() {
                         step="any"
                         value={item.quantity}
                         onChange={(e) => handleItemChange(item.id, 'quantity', Number(e.target.value))}
-                        className="w-full h-9 border border-gray-200 rounded-lg px-2 text-xs focus:border-yellow-500"
+                        className="w-full h-9 border border-gray-200 rounded-lg px-2 text-xs focus:border-sky-500"
                       />
                     </div>
 
@@ -1420,7 +1420,7 @@ export default function BillingEngine() {
                         step="any"
                         value={item.rate}
                         onChange={(e) => handleItemChange(item.id, 'rate', Number(e.target.value))}
-                        className="w-full h-9 border border-gray-200 rounded-lg px-2 text-xs focus:border-yellow-500"
+                        className="w-full h-9 border border-gray-200 rounded-lg px-2 text-xs focus:border-sky-500"
                       />
                     </div>
 
@@ -1496,7 +1496,7 @@ export default function BillingEngine() {
               id="engine-add-item-btn"
               type="button"
               onClick={addItemRow}
-              className="mt-4 flex items-center justify-center gap-2 w-full py-3 border border-dashed border-yellow-350 bg-yellow-50/50 hover:bg-yellow-50 text-yellow-800 text-xs font-bold rounded-xl cursor-pointer transition"
+              className="mt-4 flex items-center justify-center gap-2 w-full py-3 border border-dashed border-sky-300 bg-sky-50/50 hover:bg-sky-50 text-sky-850 text-xs font-bold rounded-xl cursor-pointer transition"
             >
               <Plus className="h-4 w-4" />
               Add Another Line Item
@@ -1504,8 +1504,8 @@ export default function BillingEngine() {
           </div>
 
           {/* Section: Payment Terms, Notes, Signatory Upload, and Banking */}
-          <div className="bg-white rounded-2xl border border-yellow-250 p-6 shadow-xs relative">
-            <span className="absolute -top-3 left-6 inline-flex h-6 items-center justify-center rounded-full bg-yellow-400 px-3 text-xs font-black text-gray-900 shadow-sm">
+          <div className="bg-white rounded-2xl border border-sky-200 p-6 shadow-xs relative">
+            <span className="absolute -top-3 left-6 inline-flex h-6 items-center justify-center rounded-full bg-sky-400 px-3 text-xs font-black text-gray-955 shadow-sm">
               5. Bank Details & Signature
             </span>
 
@@ -1517,7 +1517,7 @@ export default function BillingEngine() {
                   value={invoice.meta.termsAndConditions}
                   onChange={(e) => handleMetaChange('termsAndConditions', e.target.value)}
                   placeholder="Terms of payments, penalty dates..."
-                  className="w-full border border-gray-200 rounded-lg p-2.5 text-xs focus:border-yellow-500"
+                  className="w-full border border-gray-200 rounded-lg p-2.5 text-xs focus:border-sky-500"
                 ></textarea>
               </div>
 
@@ -1528,7 +1528,7 @@ export default function BillingEngine() {
                   value={invoice.meta.notes}
                   onChange={(e) => handleMetaChange('notes', e.target.value)}
                   placeholder="Thank you message, special credits..."
-                  className="w-full border border-gray-200 rounded-lg p-2.5 text-xs focus:border-yellow-500"
+                  className="w-full border border-gray-200 rounded-lg p-2.5 text-xs focus:border-sky-500"
                 ></textarea>
               </div>
             </div>
@@ -1537,7 +1537,7 @@ export default function BillingEngine() {
             <div className="mt-4 pt-4 border-t border-gray-100">
               <div className="flex items-center justify-between mb-3">
                 <span className="text-xs font-bold text-gray-700 flex items-center gap-1.5">
-                  <CreditCard className="h-4 w-4 text-yellow-600" />
+                  <CreditCard className="h-4 w-4 text-sky-600" />
                   Include Client Bank Settlement Details
                 </span>
                 <input
@@ -1545,12 +1545,12 @@ export default function BillingEngine() {
                   id="show-bank-details"
                   checked={invoice.bankDetails.showBankDetails}
                   onChange={(e) => handleBankChange('showBankDetails', e.target.checked)}
-                  className="h-4 w-4 Accent-yellow-500 cursor-pointer"
+                  className="h-4 w-4 accent-sky-500 cursor-pointer"
                 />
               </div>
 
               {invoice.bankDetails.showBankDetails && (
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 p-4 bg-yellow-55/30 rounded-xl border border-yellow-105">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 p-4 bg-sky-50/30 rounded-xl border border-sky-200">
                   <div>
                     <label className="block text-[10px] font-bold text-gray-600 mb-1">Bank Institution</label>
                     <input
@@ -1615,8 +1615,8 @@ export default function BillingEngine() {
                   </div>
 
                   {invoice.bankDetails.upiId && (
-                    <div className="col-span-1 sm:col-span-3 flex items-center justify-between p-2.5 bg-yellow-105/50 rounded-lg mt-1 border border-yellow-250">
-                      <span className="text-[10px] font-semibold text-yellow-900 flex items-center gap-1">
+                    <div className="col-span-1 sm:col-span-3 flex items-center justify-between p-2.5 bg-sky-100/50 rounded-lg mt-1 border border-sky-200">
+                      <span className="text-[10px] font-semibold text-sky-900 flex items-center gap-1">
                         <QrCode className="h-4 w-4" />
                         Show dynamic UPI QR Code on Invoice template in side preview!
                       </span>
@@ -1624,7 +1624,7 @@ export default function BillingEngine() {
                         type="checkbox"
                         checked={invoice.bankDetails.showUpiQr}
                         onChange={(e) => handleBankChange('showUpiQr', e.target.checked)}
-                        className="h-4 w-4 Accent-yellow-500 cursor-pointer text-xs"
+                        className="h-4 w-4 accent-sky-500 cursor-pointer text-xs"
                       />
                     </div>
                   )}
@@ -1657,7 +1657,7 @@ export default function BillingEngine() {
                   />
                   <label
                     htmlFor="digital-signature-file"
-                    className="flex items-center justify-center gap-1.5 h-10 border border-dashed border-gray-350 rounded-lg text-xs font-bold text-gray-650 bg-gray-55/50 hover:bg-yellow-50 hover:border-yellow-400 cursor-pointer transition"
+                    className="flex items-center justify-center gap-1.5 h-10 border border-dashed border-gray-350 rounded-lg text-xs font-bold text-gray-650 bg-gray-55/50 hover:bg-sky-50 hover:border-sky-400 cursor-pointer transition"
                   >
                     <Upload className="h-3.5 w-3.5" />
                     {signatureFile ? 'Change Signature' : 'Upload Signature'}
@@ -1673,7 +1673,7 @@ export default function BillingEngine() {
               id="bill-engine-download-btn"
               onClick={handleDownloadPdf}
               disabled={isGeneratingPdf}
-              className="flex-1 h-14 bg-yellow-400 text-gray-950 font-black rounded-2xl hover:bg-yellow-500 active:scale-[0.99] cursor-pointer transition-all flex items-center justify-center gap-2.5 shadow-md hover:shadow-lg disabled:opacity-50 text-[15px]"
+              className="flex-1 h-14 bg-sky-400 text-gray-950 font-black rounded-2xl hover:bg-sky-500 active:scale-[0.99] cursor-pointer transition-all flex items-center justify-center gap-2.5 shadow-md hover:shadow-lg disabled:opacity-50 text-[15px]"
             >
               {isGeneratingPdf ? (
                 <>
@@ -1697,8 +1697,8 @@ export default function BillingEngine() {
         {/* Live Preview Panel Column - 5 Columns Width */}
         <div className="lg:col-span-5 lg:sticky lg:top-24 space-y-4">
           <div className="flex justify-between items-center bg-gray-900 text-white px-4 py-3 rounded-t-2xl border-b border-gray-800">
-            <span className="text-xs font-black tracking-wider uppercase text-yellow-400 flex items-center gap-1.5">
-              <span className="block h-2 w-2 rounded-full bg-yellow-400 animate-ping"></span>
+            <span className="text-xs font-black tracking-wider uppercase text-sky-400 flex items-center gap-1.5">
+              <span className="block h-2 w-2 rounded-full bg-sky-400 animate-ping"></span>
               Live PDF Template Preview
             </span>
             <div className="flex items-center gap-2">
@@ -2011,11 +2011,11 @@ export default function BillingEngine() {
           
           {/* Backing Invoice history logs stack */}
           {history.length > 0 && (
-            <div className="bg-white rounded-2xl border border-yellow-250 p-4 shadow-sm text-xs">
+            <div className="bg-white rounded-2xl border border-sky-200 p-4 shadow-sm text-xs">
               <h5 className="font-bold text-gray-900 mb-2">My Local Invoices List Saved</h5>
               <div className="space-y-2">
                 {history.map((hist, idx) => (
-                  <div key={idx} className="flex justify-between items-center p-2.5 bg-gray-50 hover:bg-yellow-50/50 rounded-lg">
+                  <div key={idx} className="flex justify-between items-center p-2.5 bg-gray-50 hover:bg-sky-50/50 rounded-lg">
                     <div>
                       <span className="font-bold block text-gray-950">{hist.sender.name || 'Personal Client'}</span>
                       <span className="text-[10px] text-gray-500">Invoice: {hist.meta.invoiceNumber} | {hist.meta.invoiceDate}</span>
@@ -2027,7 +2027,7 @@ export default function BillingEngine() {
                         setCurrentSymbol(config.currencySymbol);
                         setInvoice({ ...hist });
                       }}
-                      className="text-[10px] font-bold text-yellow-700 hover:text-yellow-905 cursor-pointer bg-white px-2.5 py-1 rounded border border-yellow-200"
+                      className="text-[10px] font-bold text-sky-700 hover:text-sky-900 cursor-pointer bg-white px-2.5 py-1 rounded border border-sky-200"
                     >
                       Retrieve Data
                     </button>

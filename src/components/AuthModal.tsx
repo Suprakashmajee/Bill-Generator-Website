@@ -60,7 +60,7 @@ export default function AuthModal({ isOpen, onClose, onSuccess, initialTab = 'lo
 
         {/* Brand Header */}
         <div className="text-center mb-6">
-          <div className="mx-auto mb-2 flex h-12 w-12 items-center justify-center rounded-full bg-yellow-100 text-yellow-600">
+          <div className="mx-auto mb-2 flex h-12 w-12 items-center justify-center rounded-full bg-sky-100 text-sky-600">
             <ShieldCheck className="h-6 w-6" />
           </div>
           <h2 className="text-2xl font-bold tracking-tight text-gray-900">
@@ -78,7 +78,7 @@ export default function AuthModal({ isOpen, onClose, onSuccess, initialTab = 'lo
             onClick={() => { setTab('login'); setError(''); setSuccess(''); }}
             className={`w-1/2 py-2.5 text-center font-medium text-sm border-b-2 transition-all cursor-pointer ${
               tab === 'login'
-                ? 'border-yellow-500 text-yellow-600'
+                ? 'border-sky-500 text-sky-600'
                 : 'border-transparent text-gray-400 hover:text-gray-600'
             }`}
           >
@@ -89,7 +89,7 @@ export default function AuthModal({ isOpen, onClose, onSuccess, initialTab = 'lo
             onClick={() => { setTab('signup'); setError(''); setSuccess(''); }}
             className={`w-1/2 py-2.5 text-center font-medium text-sm border-b-2 transition-all cursor-pointer ${
               tab === 'signup'
-                ? 'border-yellow-500 text-yellow-600'
+                ? 'border-sky-500 text-sky-600'
                 : 'border-transparent text-gray-400 hover:text-gray-600'
             }`}
           >
@@ -124,7 +124,7 @@ export default function AuthModal({ isOpen, onClose, onSuccess, initialTab = 'lo
                   placeholder="John Doe"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full rounded-lg border border-gray-200 py-2 pl-9 pr-4 text-sm focus:border-yellow-500 focus:outline-hidden"
+                  className="w-full rounded-lg border border-gray-200 py-2 pl-9 pr-4 text-sm focus:border-sky-500 focus:outline-hidden"
                   required={tab === 'signup'}
                 />
               </div>
@@ -143,7 +143,7 @@ export default function AuthModal({ isOpen, onClose, onSuccess, initialTab = 'lo
                 placeholder="name@company.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full rounded-lg border border-gray-200 py-2 pl-9 pr-4 text-sm focus:border-yellow-500 focus:outline-hidden"
+                className="w-full rounded-lg border border-gray-200 py-2 pl-9 pr-4 text-sm focus:border-sky-500 focus:outline-hidden"
                 required
               />
             </div>
@@ -157,7 +157,7 @@ export default function AuthModal({ isOpen, onClose, onSuccess, initialTab = 'lo
                   type="button"
                   id="auth-forgot-password"
                   onClick={() => alert('Instruction email for resetting password has been dispatched!')}
-                  className="text-[10px] text-yellow-600 hover:underline cursor-pointer font-medium"
+                  className="text-[10px] text-sky-600 hover:underline cursor-pointer font-medium"
                 >
                   Forgot?
                 </button>
@@ -173,7 +173,7 @@ export default function AuthModal({ isOpen, onClose, onSuccess, initialTab = 'lo
                 placeholder="••••••••"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full rounded-lg border border-gray-200 py-2 pl-9 pr-8 text-sm focus:border-yellow-500 focus:outline-hidden"
+                className="w-full rounded-lg border border-gray-200 py-2 pl-9 pr-8 text-sm focus:border-sky-500 focus:outline-hidden"
                 required
               />
               <button
@@ -191,7 +191,7 @@ export default function AuthModal({ isOpen, onClose, onSuccess, initialTab = 'lo
             type="submit"
             id="auth-submit-btn"
             disabled={loading}
-            className="w-full h-11 bg-yellow-500 text-gray-900 rounded-lg font-semibold hover:bg-yellow-600 cursor-pointer font-medium flex items-center justify-center transition-all disabled:opacity-50 mt-6 shadow-xs"
+            className="w-full h-11 bg-sky-400 text-gray-950 rounded-lg hover:bg-sky-500 cursor-pointer font-bold flex items-center justify-center transition-all disabled:opacity-50 mt-6 shadow-xs"
           >
             {loading ? (
               <span className="flex items-center gap-2">
@@ -213,7 +213,7 @@ export default function AuthModal({ isOpen, onClose, onSuccess, initialTab = 'lo
           <button
             id="auth-mode-switch"
             onClick={() => { setTab(tab === 'login' ? 'signup' : 'login'); setError(''); setSuccess(''); }}
-            className="font-bold text-yellow-600 hover:underline cursor-pointer"
+            className="font-bold text-sky-600 hover:underline cursor-pointer"
           >
             {tab === 'login' ? 'Sign Up Free' : 'Sign In'}
           </button>

@@ -22,7 +22,7 @@ export default function Footer() {
   };
 
   return (
-    <footer id="contact-us" className="bg-gray-950 text-white pt-16 pb-12 border-t border-yellow-405/20">
+    <footer id="contact-us" className="bg-gray-950 text-white pt-16 pb-12 border-t border-sky-400/20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
         {/* Contact Us + Quick Form top block */}
@@ -31,11 +31,11 @@ export default function Footer() {
           {/* Brand + Contact details columns (5 cols width) */}
           <div className="lg:col-span-5 space-y-6">
             <div className="flex items-center gap-2">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-yellow-400 text-gray-900 shadow-md">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-sky-400 text-gray-950 shadow-md">
                 <Receipt className="h-5.5 w-5.5" />
               </div>
               <span className="text-xl font-black tracking-tight text-white">
-                Bill_Store<span className="text-yellow-400">.</span>
+                Bill_Store<span className="text-sky-400">.</span>
               </span>
             </div>
 
@@ -47,9 +47,9 @@ export default function Footer() {
             <div className="space-y-3.5 pt-2">
               <a
                 href="mailto:support@billstore.com"
-                className="flex items-center gap-2.5 text-xs text-gray-300 hover:text-yellow-400 transition"
+                className="flex items-center gap-2.5 text-xs text-gray-300 hover:text-sky-400 transition"
               >
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gray-900 text-yellow-400 border border-gray-800 shrink-0">
+                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gray-900 text-sky-400 border border-gray-800 shrink-0">
                   <Mail className="h-4 w-4" />
                 </div>
                 <div>
@@ -60,9 +60,9 @@ export default function Footer() {
 
               <a
                 href="tel:9564327643"
-                className="flex items-center gap-2.5 text-xs text-gray-300 hover:text-yellow-400 transition"
+                className="flex items-center gap-2.5 text-xs text-gray-300 hover:text-sky-400 transition"
               >
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gray-900 text-yellow-400 border border-gray-800 shrink-0">
+                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gray-900 text-sky-400 border border-gray-800 shrink-0">
                   <Phone className="h-4 w-4" />
                 </div>
                 <div>
@@ -72,7 +72,7 @@ export default function Footer() {
               </a>
 
               <div className="flex items-center gap-2.5 text-xs text-gray-300">
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gray-900 text-yellow-500 border border-gray-800 shrink-0">
+                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gray-900 text-sky-500 border border-gray-800 shrink-0">
                   <MapPin className="h-4 w-4" />
                 </div>
                 <div>
@@ -86,7 +86,7 @@ export default function Footer() {
           {/* Quick Support messaging box (7 cols width) */}
           <div className="lg:col-span-7 bg-gray-900/50 p-6 rounded-2xl border border-gray-800/80">
             <h4 className="text-sm font-black text-white uppercase tracking-wider mb-2 flex items-center gap-1.5">
-              <Sparkles className="h-4 w-4 text-yellow-400" />
+              <Sparkles className="h-4 w-4 text-sky-400" />
               Have Questions? Contact Us Instantly
             </h4>
             <p className="text-xs text-gray-450 leading-relaxed mb-4 font-semibold">
@@ -108,7 +108,7 @@ export default function Footer() {
                   placeholder="Your Work Email (e.g. accounting@company.com)"
                   value={contactEmail}
                   onChange={(e) => setContactEmail(e.target.value)}
-                  className="w-full h-10 bg-gray-950 border border-gray-800 rounded-xl px-3 text-xs text-white focus:outline-hidden focus:border-yellow-400"
+                  className="w-full h-10 bg-gray-950 border border-gray-800 rounded-xl px-3 text-xs text-white focus:outline-hidden focus:border-sky-400"
                   required
                 />
               </div>
@@ -120,7 +120,7 @@ export default function Footer() {
                   placeholder="Explain your regulatory compliance needs or custom invoice template requirements..."
                   value={contactMessage}
                   onChange={(e) => setContactMessage(e.target.value)}
-                  className="w-full bg-gray-950 border border-gray-800 rounded-xl p-3 text-xs text-white focus:outline-hidden focus:border-yellow-400"
+                  className="w-full bg-gray-950 border border-gray-800 rounded-xl p-3 text-xs text-white focus:outline-hidden focus:border-sky-400"
                   required
                 ></textarea>
               </div>
@@ -129,7 +129,7 @@ export default function Footer() {
                 type="submit"
                 id="contact-submit-btn"
                 disabled={contactLoading}
-                className="h-10 px-5 bg-yellow-400 text-gray-950 hover:bg-yellow-500 rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 cursor-pointer disabled:opacity-50"
+                className="h-10 px-5 bg-sky-400 text-gray-955 hover:bg-sky-500 rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5 cursor-pointer disabled:opacity-50"
               >
                 {contactLoading ? (
                   <>
@@ -156,29 +156,29 @@ export default function Footer() {
           <div>
             <h5 className="font-extrabold text-white text-xs mb-3 uppercase tracking-wider">Company Info</h5>
             <ul className="space-y-2 text-gray-400">
-              <li><a href="#about-us" className="hover:text-yellow-400 transition">About US</a></li>
-              <li><a href="#hero" className="hover:text-yellow-400 transition">Our Vision</a></li>
-              <li><button onClick={() => alert('Access credentials check: Global server status online.')} className="hover:text-yellow-400 transition cursor-pointer text-left">Internal Status</button></li>
-              <li><button onClick={() => alert('Feature release log v2.6 unlocked inside active workspace.')} className="hover:text-yellow-400 transition cursor-pointer text-left font-bold text-yellow-555">Release Changelogs</button></li>
+              <li><a href="#about-us" className="hover:text-sky-400 transition">About US</a></li>
+              <li><a href="#hero" className="hover:text-sky-400 transition">Our Vision</a></li>
+              <li><button onClick={() => alert('Access credentials check: Global server status online.')} className="hover:text-sky-400 transition cursor-pointer text-left">Internal Status</button></li>
+              <li><button onClick={() => alert('Feature release log v2.6 unlocked inside active workspace.')} className="hover:text-sky-400 transition cursor-pointer text-left font-bold text-sky-500">Release Changelogs</button></li>
             </ul>
           </div>
 
           <div>
             <h5 className="font-extrabold text-white text-xs mb-3 uppercase tracking-wider">Resources</h5>
             <ul className="space-y-2 text-gray-400">
-              <li><button onClick={() => alert('Official corporate blog release pipeline in roadmap.')} className="hover:text-yellow-400 transition cursor-pointer text-left">Blog Updates</button></li>
-              <li><a href="#billing-engine" className="hover:text-yellow-400 transition">Invoice Generator</a></li>
-              <li><a href="#pricing" className="hover:text-yellow-400 transition">Starter Pricing</a></li>
-              <li><button onClick={() => alert('Help support tutorials catalog loaded.')} className="hover:text-yellow-400 transition cursor-pointer text-left">Self Help Center</button></li>
+              <li><button onClick={() => alert('Official corporate blog release pipeline in roadmap.')} className="hover:text-sky-400 transition cursor-pointer text-left">Blog Updates</button></li>
+              <li><a href="#billing-engine" className="hover:text-sky-400 transition">Invoice Generator</a></li>
+              <li><a href="#pricing" className="hover:text-sky-400 transition">Starter Pricing</a></li>
+              <li><button onClick={() => alert('Help support tutorials catalog loaded.')} className="hover:text-sky-400 transition cursor-pointer text-left">Self Help Center</button></li>
             </ul>
           </div>
 
           <div>
             <h5 className="font-extrabold text-white text-xs mb-3 uppercase tracking-wider">Legal Terms</h5>
             <ul className="space-y-2 text-gray-400">
-              <li><button onClick={() => alert('Official Corporate Terms and Conditions: User assets protected locally.')} className="hover:text-yellow-400 transition cursor-pointer text-left">Terms & Conditions</button></li>
-              <li><button onClick={() => alert('Privacy compliance: No consumer cookies or private details cached online.')} className="hover:text-yellow-400 transition cursor-pointer text-left">Privacy & Policy</button></li>
-              <li><button onClick={() => alert('Commercial utilization limits align with physical region parameters.')} className="hover:text-yellow-400 transition cursor-pointer text-left">Usage Policy</button></li>
+              <li><button onClick={() => alert('Official Corporate Terms and Conditions: User assets protected locally.')} className="hover:text-sky-400 transition cursor-pointer text-left">Terms & Conditions</button></li>
+              <li><button onClick={() => alert('Privacy compliance: No consumer cookies or private details cached online.')} className="hover:text-sky-400 transition cursor-pointer text-left">Privacy & Policy</button></li>
+              <li><button onClick={() => alert('Commercial utilization limits align with physical region parameters.')} className="hover:text-sky-400 transition cursor-pointer text-left">Usage Policy</button></li>
             </ul>
           </div>
 

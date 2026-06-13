@@ -26,7 +26,7 @@ export default function App() {
   };
 
   return (
-    <div id="app-root-wrapper" className="min-h-screen bg-[#FFFDF0] text-gray-900 selection:bg-yellow-250 selection:text-yellow-950 font-sans antialiased">
+    <div id="app-root-wrapper" className="min-h-screen bg-[#F0F9FF] text-gray-900 selection:bg-sky-200 selection:text-sky-950 font-sans antialiased">
       
       {/* Dynamic Navigation Header */}
       <Navbar 
@@ -42,7 +42,7 @@ export default function App() {
 
       {/* Main Core Invoice Maker section block */}
       <div id="billing-engine-section" className="relative">
-        <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-[#FFFDF0] to-[#FEFCE8] -z-10" />
+        <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-[#F0F9FF] to-[#E0F2FE] -z-10" />
         <BillingEngine />
       </div>
 

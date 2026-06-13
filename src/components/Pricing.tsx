@@ -72,12 +72,12 @@ export default function Pricing() {
   ];
 
   return (
-    <section id="pricing" className="bg-yellow-105-to-white py-16 md:py-24 border-t border-yellow-200">
+    <section id="pricing" className="bg-gradient-to-b from-sky-50 to-white py-16 md:py-24 border-t border-sky-200">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
         {/* Metric header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-xs font-black uppercase tracking-widest text-yellow-600 bg-yellow-100 px-3 py-1.5 rounded-full border border-yellow-250">
+          <span className="text-xs font-black uppercase tracking-widest text-sky-600 bg-sky-100 px-3 py-1.5 rounded-full border border-sky-250">
             Subscription pricing
           </span>
           <h2 className="text-3xl md:text-4xl font-black text-gray-950 mt-4 tracking-tight">
@@ -96,13 +96,13 @@ export default function Pricing() {
               id={`pricing-card-${index}`}
               className={`relative rounded-3xl p-8 flex flex-col justify-between transition-all duration-300 border ${
                 tier.popular
-                  ? 'bg-white border-2 border-yellow-400 shadow-xl scale-102 z-10'
-                  : 'bg-white/80 backdrop-blur-xs border-yellow-200 shadow-sm hover:shadow-md'
+                  ? 'bg-white border-2 border-sky-400 shadow-xl scale-102 z-10'
+                  : 'bg-white/80 backdrop-blur-xs border-sky-200 shadow-sm hover:shadow-md'
               }`}
             >
               {/* Popular custom indicator */}
               {tier.popular && (
-                <span className="absolute -top-4 left-1/2 -translate-x-1/2 flex items-center gap-1 px-4.5 py-1 text-[11px] font-black tracking-widest uppercase text-white bg-gradient-to-r from-amber-600 to-yellow-500 rounded-full shadow-md">
+                <span className="absolute -top-4 left-1/2 -translate-x-1/2 flex items-center gap-1 px-4.5 py-1 text-[11px] font-black tracking-widest uppercase text-white bg-gradient-to-r from-sky-650 to-sky-500 rounded-full shadow-md">
                   <Flame className="h-3.5 w-3.5 fill-white" />
                   Most Popular
                 </span>
@@ -113,7 +113,7 @@ export default function Pricing() {
                 <div className="flex items-center justify-between">
                   <h3 className="text-lg font-black text-gray-950 uppercase tracking-wide">{tier.name}</h3>
                   {tier.popular ? (
-                    <Star className="h-5 w-5 text-yellow-500 fill-yellow-500" />
+                    <Star className="h-5 w-5 text-sky-550 fill-sky-500 text-sky-550" />
                   ) : (
                     <Shield className="h-5 w-5 text-gray-300" />
                   )}
@@ -137,7 +137,7 @@ export default function Pricing() {
                 <ul className="space-y-3">
                   {tier.features.map((feat, fIdx) => (
                     <li key={fIdx} className="flex items-start gap-2.5 text-xs text-gray-650 leading-snug">
-                      <div className="bg-yellow-50 text-yellow-600 p-0.5 rounded-md mt-0.5 shrink-0 border border-yellow-105">
+                      <div className="bg-sky-50 text-sky-600 p-0.5 rounded-md mt-0.5 shrink-0 border border-sky-100">
                         <Check className="h-3.5 w-3.5" />
                       </div>
                       <span className="font-semibold text-gray-700">{feat}</span>
@@ -152,8 +152,8 @@ export default function Pricing() {
                 onClick={() => handleBuyNow(tier.name, tier.cost)}
                 className={`mt-8 w-full py-3.5 rounded-2xl font-black text-xs uppercase tracking-wider transition-all cursor-pointer ${
                   tier.popular
-                    ? 'bg-yellow-400 hover:bg-yellow-500 text-gray-950 shadow-md hover:shadow-lg hover:scale-101'
-                    : 'bg-gray-100 hover:bg-yellow-50 text-gray-700 hover:text-yellow-800'
+                    ? 'bg-sky-400 hover:bg-sky-500 text-gray-955 shadow-md hover:shadow-lg hover:scale-101'
+                    : 'bg-gray-100 hover:bg-sky-50 text-gray-700 hover:text-sky-850'
                 }`}
               >
                 {tier.ctaLabel}
@@ -179,7 +179,7 @@ export default function Pricing() {
                 <X className="h-5 w-5" />
               </button>
               <div className="flex items-center gap-2">
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-yellow-400 text-gray-900">
+                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-sky-400 text-gray-950">
                   <CreditCard className="h-4.5 w-4.5" />
                 </div>
                 <h3 className="font-black text-lg text-white">Secure Storefront Checkout</h3>
@@ -199,13 +199,13 @@ export default function Pricing() {
                   </div>
                   <div className="text-right">
                     <span className="text-gray-500 block">Executing Charge:</span>
-                    <strong className="text-sm font-black text-yellow-700">Rs. {selectedPlan.cost}</strong>
+                    <strong className="text-sm font-black text-sky-700">Rs. {selectedPlan.cost}</strong>
                   </div>
                 </div>
 
                 {selectedPlan.cost === "0" ? (
                   <div className="text-center py-6 space-y-3">
-                    <Sparkles className="h-10 w-10 text-yellow-500 mx-auto animate-bounce" />
+                    <Sparkles className="h-10 w-10 text-sky-500 mx-auto animate-bounce" />
                     <div>
                       <h4 className="font-bold text-gray-950">Free Tier Sign-In Required</h4>
                       <p className="text-xs text-gray-500 px-4 mt-1">Activate the Free tier immediately without submitting payment information.</p>
@@ -221,7 +221,7 @@ export default function Pricing() {
                         placeholder="John Doe"
                         value={cardHolder}
                         onChange={(e) => setCardHolder(e.target.value)}
-                        className="w-full h-9 border border-gray-200 rounded-lg px-2.5 text-xs focus:border-yellow-500"
+                        className="w-full h-9 border border-gray-200 rounded-lg px-2.5 text-xs focus:border-sky-500"
                         required
                       />
                     </div>
@@ -235,7 +235,7 @@ export default function Pricing() {
                         maxLength={19}
                         value={cardNumber}
                         onChange={(e) => setCardNumber(e.target.value.replace(/\s?/g, '').replace(/(\d{4})/g, '$1 ').trim())}
-                        className="w-full h-9 border border-gray-200 rounded-lg px-2.5 text-xs font-mono focus:border-yellow-500"
+                        className="w-full h-9 border border-gray-200 rounded-lg px-2.5 text-xs font-mono focus:border-sky-500"
                         required
                       />
                     </div>
@@ -250,7 +250,7 @@ export default function Pricing() {
                           maxLength={5}
                           value={expiry}
                           onChange={(e) => setExpiry(e.target.value)}
-                          className="w-full h-9 border border-gray-200 rounded-lg px-2.5 text-xs font-mono focus:border-yellow-500"
+                          className="w-full h-9 border border-gray-200 rounded-lg px-2.5 text-xs font-mono focus:border-sky-500"
                           required
                         />
                       </div>
@@ -263,7 +263,7 @@ export default function Pricing() {
                           maxLength={3}
                           value={cvv}
                           onChange={(e) => setCvv(e.target.value)}
-                          className="w-full h-9 border border-gray-200 rounded-lg px-2.5 text-xs font-mono focus:border-yellow-500"
+                          className="w-full h-9 border border-gray-200 rounded-lg px-2.5 text-xs font-mono focus:border-sky-500"
                           required
                         />
                       </div>
@@ -276,7 +276,7 @@ export default function Pricing() {
                   type="submit"
                   id="checkout-submit-btn"
                   disabled={checkoutLoading}
-                  className="w-full h-11 bg-yellow-400 text-gray-950 font-black rounded-xl hover:bg-yellow-500 flex items-center justify-center transition disabled:opacity-50 text-xs tracking-wider uppercase"
+                  className="w-full h-11 bg-sky-400 text-gray-955 font-black rounded-xl hover:bg-sky-500 flex items-center justify-center transition disabled:opacity-50 text-xs tracking-wider uppercase"
                 >
                   {checkoutLoading ? (
                     <span className="flex items-center gap-2">
