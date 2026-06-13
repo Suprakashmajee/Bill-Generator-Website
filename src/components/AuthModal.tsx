@@ -18,6 +18,31 @@ export default function AuthModal({ isOpen, onClose, onSuccess, initialTab = 'lo
   const [success, setSuccess] = useState('');
   const [error, setError] = useState('');
 
+  const handleForgotPassword = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setError('');
+    setSuccess('');
+
+    if (!email) {
+      setError('Please enter your email address above to view or reset your password.');
+      return;
+    }
+
+    try {
+      const usersJson = localStorage.getItem('billstore_users') || '[]';
+      const users = JSON.parse(usersJson) as { name: string; email: string; password?: string }[];
+      const foundUser = users.find(u => u.email.toLowerCase() === email.toLowerCase().trim());
+
+      if (foundUser) {
+        setSuccess(`Local Sandbox Recovery: Password for your account is "${foundUser.password}"`);
+      } else {
+        setSuccess(`Instruction email for resetting password has been dispatched to ${email}!`);
+      }
+    } catch (err) {
+      setSuccess(`Instruction email for resetting password has been dispatched to ${email}!`);
+    }
+  };
+
   if (!isOpen) return null;
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -234,14 +259,14 @@ export default function AuthModal({ isOpen, onClose, onSuccess, initialTab = 'lo
             <div className="flex justify-between items-center mb-1">
               <label className="text-xs font-semibold text-gray-600">Password</label>
               {tab === 'login' && (
-                <button
-                  type="button"
+                <span
+                  role="button"
                   id="auth-forgot-password"
-                  onClick={() => alert('Instruction email for resetting password has been dispatched!')}
-                  className="text-[10px] text-sky-600 hover:underline cursor-pointer font-medium"
+                  onClick={handleForgotPassword}
+                  className="text-[10px] text-sky-600 hover:underline cursor-pointer font-medium select-none"
                 >
                   Forgot?
-                </button>
+                </span>
               )}
             </div>
             <div className="relative">
